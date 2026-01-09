@@ -41,17 +41,17 @@ const totalPairs = cards.length;
 
 // La base de datos usada es Firebase de Google (en cada uno lo tengo bien, pero aquí pongo de ejemplo tu_loquesea)
 const firebaseConfig = {
-  apiKey: "AIzaSyCL0eF7dSAPslWGIXY67VMk7_AaM5Igeos",
+  apiKey: "tu_apiKey",
 
-  authDomain: "sonicpairs.firebaseapp.com",
+  authDomain: "tu_authDomain",
 
-  projectId: "sonicpairs",
+  projectId: "tu_projectId",
 
-  storageBucket: "sonicpairs.firebasestorage.app",
+  storageBucket: "tu_storageBucket",
 
-  messagingSenderId: "800178826362",
+  messagingSenderId: "tu_messagingSenderId",
 
-  appId: "1:800178826362:web:47d0aaf0f5855edfdcdfc3"
+  appId: "tu_appId"
 };
 
 // Inicialización
