@@ -1,0 +1,360 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
+
+.status {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 6px 0;
+  letter-spacing: 0.5px;
+}
+
+/* valores destacados dentro del estado */
+.status span {
+  color: #e63946;
+  font-weight: 900;
+}
+
+
+
+
+
+                                                  /* CONTENEDOR PRINCIPAL */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
+
+
+                                    /* TÍTULO + BOTONES + TEXTOS DE MOVIEMIENTOS Y TIEMPO */
+.titulo {
+  font-family: 'Bangers', cursive;
+  font-size: 48px;
+  color: #007bff;
+  text-shadow: 2px 2px 0 #000;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(224, 65, 17);
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Botón deshabilitado */
+button:disabled {
+  background-color: #e2cd12f3;
+  cursor: not-allowed;
+}
+
+.moves-value {
+  color: #ffb703;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.time-value {
+  color: #ffb703;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+/* Mensaje genérico bajo el tablero */
+.message {
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Mensaje de error genérico */
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+
+
+
+
+/* GIF DE SONIC */
+/* Fondo lateral izquierdo y derecho */
+.bg-left,
+.bg-right {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 50vw;
+  background-image: url('gifs/gif_sonic.gif');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 120% auto;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-left {
+  left: 0;
+}
+
+.bg-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+
+
+
+                                                  /* LISTA DE MEJORES TIEMPOS */
+#score-section {
+  position: absolute;
+  top: 130px;
+  left: 10px;
+  width: 300px;
+  height: 600px;
+  background-color: black;
+  border: 3px solid seagreen;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Título del ranking */
+#score-section h2 {
+  color: red;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+/* Cabecera del ranking (icono + texto) */
+.score-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.score-icon {
+  width: 40px;
+  height: auto;
+}
+
+/* Lista de puntuaciones */
+.score-list {
+  min-height: 320px;
+  background-color: transparent;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.score-list li {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Lista dentro del ranking */
+#score-section .score-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Item del ranking */
+#score-section .score-list li {
+  color: #0e8cf3;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+
+
+
+
+                                                      /* TABLERO Y CARTAS */
+/* Tablero del juego */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Carta individual */
+.card {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #0e8cf3;
+  border-radius: 8px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Imagen dentro de la carta */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Carta volteada */
+.card.flipped img {
+  opacity: 1;
+  transform: scaleX(-1);
+}
+
+/* Animación al acertar pareja */
+.card.matched img {
+  animation: matchPulse 0.4s ease;
+}
+
+/* Efecto de acierto */
+@keyframes matchPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+
+
+
+
+                                            /* PARTE RESULTADOS + GUARDAR REGISTRO */
+#result-container {
+  background: none;
+  border: none;
+  width: 400px;
+  padding: 0;
+}
+
+/* Columna derecha de resultados */
+.extra-right {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Posición absoluta de la columna derecha */
+.right.extra-right {
+  position: absolute;
+  top: 130px;
+  right: 10px;
+  width: 280px;
+}
+
+/* Organización vertical de resultados */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Título de la sección */
+.right h2 {
+  color: red;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+/* Texto para los resultados */
+.score-text {
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.3rem;
+  color: rgba(237, 238, 241, 0.9);
+  font-weight: 600;
+}
+
+/* Mensaje final general */
+.end-message {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Mensaje de mejor tiempo */
+.end-message.best {
+  font-family: monospace;
+  color: hsl(69, 100%, 50%);
+}
+
+/* Mensaje de peor tiempo */
+.end-message.worst {
+  font-family: monospace;
+  color: hsl(175, 100%, 50%);
+}
+
+/* Mensaje de tiempo intermedio */
+.end-message.middle {
+  font-family: monospace;
+  color: hsl(315, 100%, 50%);
+}
+
+/* Mensaje de partida cancelada */
+.end-message.cancelled {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #6200ff;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff6600;
+  animation: blink 1s infinite alternate;
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
+}
+
+/* Error al guardar el nick */
+#resultSaveError {
+  color: rgb(255, 3, 24);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Sonic Pairs </title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="bg-left"></div>
+  <div class="bg-right"></div>
+
+  <div class="container">
+
+    <!-- Título -->
+    <header class="top-header">
+      <h1 class="titulo">SONIC PAIRS</h1>
+    </header>
+
+    <!-- Botones -->
+    <div class="buttons-wrapper">
+      <div class="buttons">
+        <button id="startBtn">Iniciar partida</button>
+        <button id="endBtn" disabled>Terminar partida</button>
+      </div>
+    </div>
+
+    <!-- Lista de mejores tiempos -->
+    <section class="left" id="score-section">
+      <div class="score-header">
+        <img src="gifs/gif_inicio_juego.gif" alt="Sonic icono" class="score-icon">
+        <h2>Mejores tiempos</h2>
+      </div>
+      <ul class="score-list" id="scoreList"></ul>
+    </section>
+
+    <!-- Datos tras partida-->
+    <section class="right extra-right" id="result-container" style="display:none;"></section>
+
+    <!-- Movimientos y tiempo -->
+    <div class="center-status">
+      <p class="status">
+        Movimientos: <span id="moveCounter">0</span> |
+        Tiempo: <span id="timeCounter">00:00:00</span>
+      </p>
+      <p id="message" class="message"></p>
+    </div>
+
+    <!-- Resultados -->
+    <main class="board-area">
+      <div class="game-board" id="gameBoard"></div>
+
+      <div class="save-score" id="saveScoreBox" style="display: none;">
+        <h3>🎉 ¡Felicidades! Introduce tu nombre para guardar tu tiempo:</h3>
+        <input type="text" id="scoreNameInput" placeholder="Tu nombre o nick" maxlength="12" />
+        <button id="saveScoreBtn">Guardar</button>
+        <p id="saveError" class="error"></p>
+      </div>
+    </main>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="canciones/Sonic The Hedgehog 3 - Data Select.m4a" type="audio/mpeg" />
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <!-- Firebase SDKs (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
