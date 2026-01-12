@@ -129,6 +129,7 @@ button:disabled {
 
 
                                                   /* LISTA DE MEJORES TIEMPOS */
+
 #score-section {
   position: absolute;
   top: 130px;
@@ -358,3 +359,76 @@ button:disabled {
   text-align: center;
   margin-top: 8px;
 }
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  /* CONTENEDOR GENERAL */
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  body {
+    background-color: #22cfcf;
+  }
+
+  /* TÍTULO */
+  .titulo {
+    font-size: 32px;
+  }
+
+  /* TABLERO */
+  .game-board {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .card {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* RANKING IZQUIERDO */
+  #score-section {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  /* COLUMNA DERECHA */
+  .right.extra-right {
+    position: static;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  /* TEXTO RESULTADOS */
+  .score-text {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  /* BOTONES */
+  button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 14px;
+  }
+
+  /* FONDOS SONIC */
+  .bg-left,
+  .bg-right {
+    display: none;
+  }
+}
+

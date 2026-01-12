@@ -41,17 +41,21 @@ const totalPairs = cards.length;
 
 // La base de datos usada es Firebase de Google (en cada uno lo tengo bien, pero aquí pongo de ejemplo tu_loquesea)
 const firebaseConfig = {
-  apiKey: "tu_apiKey",
+  
+  apiKey: "AIzaSyCL0eF7dSAPslWGIXY67VMk7_AaM5Igeos",
 
-  authDomain: "tu_authDomain",
+  authDomain: "sonicpairs.firebaseapp.com",
 
-  projectId: "tu_projectId",
+  databaseURL: "https://sonicpairs-default-rtdb.europe-west1.firebasedatabase.app",
 
-  storageBucket: "tu_storageBucket",
+  projectId: "sonicpairs",
 
-  messagingSenderId: "tu_messagingSenderId",
+  storageBucket: "sonicpairs.firebasestorage.app",
 
-  appId: "tu_appId"
+  messagingSenderId: "800178826362",
+
+  appId: "1:800178826362:web:47d0aaf0f5855edfdcdfc3"
+
 };
 
 // Inicialización
@@ -701,21 +705,35 @@ function mostarMensaje(text) {
 
 
 
-/* FUNCIÓN QUE GUARDA RESULTADO */
+/* FUNCIÓN QUE GUARDA RESULTADO, TANTO EN NAVEGADOR DE PC COMO MÓVIL */
 function guardarTiempo() {
-  // Obtenemos y limpiamos el nombre introducido
-  const name = scoreNameInput.value.trim();
+
+  // Buscar el input visible (scoreNameInput o resultNickInput)
+  let name = '';
+  let errorBox = saveError;
+
+  // Si existe el input dinámico y está visible, usar ese
+  const dynamicInput = document.getElementById('resultNickInput');
+  const dynamicError = document.getElementById('resultSaveError');
+  
+  if (dynamicInput && dynamicInput.offsetParent !== null) {
+    name = dynamicInput.value.trim();
+    errorBox = dynamicError || saveError;
+  } else {
+    name = scoreNameInput.value.trim();
+    errorBox = saveError;
+  }
 
   // Si no hay nombre, aparece mensaje de error
   if (name === '') {
-    saveError.textContent = "Por favor, introduce un nombre.";
+    errorBox.textContent = "Por favor, introduce un nombre.";
     return;
   }
 
-  saveError.textContent = '';
+  errorBox.textContent = '';
 
-  // Se oculta el cuadro de guardado
-  saveBox.style.display = 'none';
+  // Se oculta el cuadro de guardado si existe
+  if (saveBox) saveBox.style.display = 'none';
   
   // Llamamos a la función que guarda en la BB.DD.
   guardarTiempoEnBD(name, time, moves);
