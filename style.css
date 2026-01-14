@@ -31,7 +31,7 @@ body {
 
 
 
-                                                  /* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR PRINCIPAL */
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -43,7 +43,7 @@ body {
 
 
 
-                                    /* TÍTULO + BOTONES + TEXTOS DE MOVIEMIENTOS Y TIEMPO */
+/* TÍTULO + BOTONES + TEXTOS DE MOVIEMIENTOS Y TIEMPO */
 .titulo {
   font-family: 'Bangers', cursive;
   font-size: 48px;
@@ -128,7 +128,7 @@ button:disabled {
 
 
 
-                                                  /* LISTA DE MEJORES TIEMPOS */
+/* LISTA DE MEJORES TIEMPOS */
 
 #score-section {
   position: absolute;
@@ -199,7 +199,7 @@ button:disabled {
 
 
 
-                                                      /* TABLERO Y CARTAS */
+/* TABLERO Y CARTAS */
 /* Tablero del juego */
 .game-board {
   display: grid;
@@ -248,16 +248,24 @@ button:disabled {
 
 /* Efecto de acierto */
 @keyframes matchPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 
 
 
 
-                                            /* PARTE RESULTADOS + GUARDAR REGISTRO */
+/* PARTE RESULTADOS + GUARDAR REGISTRO */
 #result-container {
   background: none;
   border: none;
@@ -346,8 +354,13 @@ button:disabled {
 
 /* Animación de parpadeo */
 @keyframes blink {
-  from { opacity: 1; }
-  to { opacity: 0.6; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.6;
+  }
 }
 
 /* Error al guardar el nick */
@@ -425,4 +438,3 @@ button:disabled {
     display: none;
   }
 }
-
